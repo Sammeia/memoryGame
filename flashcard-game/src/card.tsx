@@ -10,17 +10,26 @@ type CardInfoParams = {
 }
 
 const Card: React.FC<CardInfoParams> = ({id,match,image,content}) => {
-    return (
-        <div>
-            <div>
-                <img src={image}/>
-            </div>
 
-            <div>
-                <h1>{id}</h1>
-            </div>
+    const [flipped, setFlipped] = useState(false);
+
+    return (
+        flipped ? (
+        <div className="card-image">
+        <img src={image}/>
+        <button onClick={()=>setFlipped(false)}>Flip</button>
         </div>
+    ) : (
+        <div className="card-container">
+        <div className="card-content">
+            <h1>{id}</h1>
+        </div>
+    </div>
     )
 
+)
+
 }
+
+export default Card
 
