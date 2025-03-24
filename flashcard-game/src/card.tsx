@@ -5,19 +5,18 @@ import './App.css';
 type CardInfoParams = {
      id: string;
      match: string;
+     flipped: boolean;
      image: string;
      content: string;
+     onClick: () => void;
 }
 
-const Card: React.FC<CardInfoParams> = ({id,match,image,content}) => {
-
-    const [flipped, setFlipped] = useState(false);
+const Card: React.FC<CardInfoParams> = ({id,match,flipped,image,content}) => {
 
     return (
         flipped ? (
         <div className="card-image">
         <img src={image}/>
-        <button onClick={()=>setFlipped(false)}>Flip</button>
         </div>
     ) : (
         <div className="card-container">
