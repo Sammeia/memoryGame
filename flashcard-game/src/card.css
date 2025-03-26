@@ -1,6 +1,8 @@
 .card-container{
     background-color: #282c34;
     border-radius: 50px;
+    border-color: black;
+    margin: 20px;
     padding: 20px;
     text-align: center;
     color:white;

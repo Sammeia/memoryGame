@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Game from './game'
 
-const endScreen: React.FC = () => {
+const EndScreen: React.FC = () => {
     const [playAgain, setPlayAgain] = useState(false)
 
     return (
@@ -18,4 +18,4 @@ const endScreen: React.FC = () => {
     )
 )
 }
-export default endScreen
+export default EndScreen

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './card.css';
 
 type CardInfoParams = {
      id: string;
@@ -11,20 +11,22 @@ type CardInfoParams = {
      onClick: () => void;
 }
 
-const Card: React.FC<CardInfoParams> = ({id,match,flipped,image,content}) => {
+const Card: React.FC<CardInfoParams> = ({id,match,flipped,image,content,onClick}) => {
 
     return (
-        flipped ? (
+        <div onClick={onClick}>
+        {flipped ? (
         <div className="card-image">
         <img src={image}/>
         </div>
     ) : (
         <div className="card-container">
-        <div className="card-content">
-            <h1>{id}</h1>
+            <div className="card-content">
+                <h1>{content}</h1>
+            </div>
         </div>
+    )}
     </div>
-    )
 
 )
 
