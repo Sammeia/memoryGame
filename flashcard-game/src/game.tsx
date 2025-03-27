@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Card from './card';
 import GameBoard from './gameboard';
+import EndScreen from './endscreen';
 
 type Card = {
     id: string;
@@ -100,6 +101,10 @@ const Game: React.FC = () => {
 ]
 
 const [cards, setCardArray] = useState<Card[]>(cardArray);
+const [gameOver, setGameOver] = useState<boolean>(false);
+const [currentMoves, setCurrentMoves] = useState<number>(0);
+const [totalMoves, setTotalMoves] = useState<number>(0);
+const [totalGames, setTotalGames] = useState<number>(0);
 
 const shuffleCards = (array: Card[]) => {
     const newArray = [...array];
@@ -112,15 +117,33 @@ const shuffleCards = (array: Card[]) => {
 
 const handleCardShuffle = () => {
     setCardArray(shuffleCards(cardArray));
+    setCurrentMoves(0);
+}
+
+const handleGameOver = () => {
+    setGameOver(true);
+    setTotalGames(totalGames + 1);
+    setTotalMoves(totalMoves + currentMoves);
+    handleCardShuffle();
 }
 
     return(
         <>
         <div>
-            <button onClick={handleCardShuffle}>Reset Game</button>
+            <h1>Games Played: {totalGames}</h1>
+            <h1>Average # of Moves: {totalMoves/totalGames}</h1>
         </div>
         <div>
-            <GameBoard cardArray={cards} />
+            {gameOver ? (
+                <EndScreen onReset={() => setGameOver(false)}/>
+            ):(
+            <GameBoard 
+            cardArray={cards} 
+            onGameOver={handleGameOver} 
+            reset={handleCardShuffle}
+            setCurrentMoves = {setCurrentMoves}
+            currentMoves ={currentMoves}/>
+            )}
         </div>
         </>
 

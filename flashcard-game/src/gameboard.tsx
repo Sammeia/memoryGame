@@ -13,54 +13,58 @@ type Card = {
 
 type GameBoardProps ={
     cardArray: Card[];
+    onGameOver: () => void;
+    reset: () => void;
+    setCurrentMoves: React.Dispatch<React.SetStateAction<number>>;
+    currentMoves: number;
 }
 
-const GameBoard: React.FC<GameBoardProps> = ({cardArray}) => {
+const GameBoard: React.FC<GameBoardProps> = ({cardArray,onGameOver,reset,setCurrentMoves,currentMoves}) => {
 
     const [flippedCards, setFlippedCards] = useState<Card[]>([]);
     const [matchedCards, setMatchedCards] = useState<Card[]>([]);
-    const [gameOver, setGameOver] = useState<boolean>(false);
-    const [moveCount, setMoveCount] = useState<number>(0);
-
-    const handleGameOver = () =>{
-        setFlippedCards([]);
-        setMatchedCards([]);
-        setGameOver(true);
-    }
 
     const handleFlip = (card: Card)=>{
-        setMoveCount(moveCount + 1)
+        setCurrentMoves(currentMoves + 1)
         if(flippedCards.length === 0){
             setFlippedCards([card]);
         } else if(flippedCards.length === 1){
-            setFlippedCards([...flippedCards, card]);
+
+            setFlippedCards([flippedCards[0],card]);
+
             if(flippedCards[0].match === card.match){
-                setMatchedCards([...matchedCards, ...flippedCards]);
+                const newMatchedCards = [...matchedCards, flippedCards[0], card];
+                setMatchedCards(newMatchedCards);
                 setFlippedCards([]);
-                if(matchedCards.length === cardArray.length){
-                    handleGameOver()
+
+                if(newMatchedCards.length === cardArray.length){
+                    onGameOver();
                 }
-            }
-        }else{
-            setTimeout(()=>{
-                setFlippedCards([]);
-                setMatchedCards([]);
-        },1000);
+            }else{
+                setTimeout(()=>{
+                    setFlippedCards([]);
+                    setMatchedCards([]);
+            },1000);
+        }
     }
     }
 
     return (
-        gameOver ? (<EndScreen/>) :
-        (<div className = "card-grid">
-            {cardArray.map((card)=>(
-                <Card key={card.id} 
-                {...card} 
-                flipped = {matchedCards.includes(card)|| flippedCards.includes(card)}
-                onClick={() => handleFlip(card)}
-                />
-            ))}
+        <>
+        <div>
+            <h1>Current # of Moves: {currentMoves}</h1>
         </div>
+        <div>
+            <button onClick={reset}>Reset Game</button>
+        </div><div className="card-grid">
+                {cardArray.map((card) => (
+                    <Card key={card.id}
+                        {...card}
+                        flipped={matchedCards.includes(card) || flippedCards.includes(card)}
+                        onClick={() => handleFlip(card)} />
+                ))}
+            </div>
+        </>
         )
-    )
 }
 export default GameBoard
