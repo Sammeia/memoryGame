@@ -5,7 +5,7 @@ import Game from './game';
 
 function App() {
 
-  const [gameStarted, setGameStarted] = useState(false);
+  const [gameStarted, setGameStarted] = useState<boolean>(false);
 
   return (
     gameStarted ?  (<Game/>) : (
