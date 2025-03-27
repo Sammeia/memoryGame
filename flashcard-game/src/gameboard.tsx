@@ -51,12 +51,15 @@ const GameBoard: React.FC<GameBoardProps> = ({cardArray,onGameOver,reset,setCurr
 
     return (
         <>
-        <div>
-            <h1>Current # of Moves: {currentMoves}</h1>
+        <div className = "game-title">
+            <div className = "moves">
+                <h1>Current # of Moves: {currentMoves}</h1>
+            </div>
+            <div className = "reset-button">
+                <button className = "reset-button" onClick={reset}>Reset Game</button>
+            </div>
         </div>
-        <div>
-            <button onClick={reset}>Reset Game</button>
-        </div><div className="card-grid">
+        <div className="card-grid">
                 {cardArray.map((card) => (
                     <Card key={card.id}
                         {...card}

@@ -17,7 +17,7 @@ const Card: React.FC<CardInfoParams> = ({id,match,flipped,image,content,onClick}
         <div onClick={onClick}>
         {flipped ? (
         <div className="card-image">
-        <img src={image}/>
+            <img src={image}/>
         </div>
     ) : (
         <div className="card-container">

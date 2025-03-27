@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './endscreen.css';
 import Game from './game'
 
 type EndScreenProps = {
@@ -8,10 +8,10 @@ type EndScreenProps = {
 }
 const EndScreen: React.FC<EndScreenProps> = ({onReset}) => {
     return (
-        <div>
-            <h1>You won! Congrats!</h1>
+        <div className = "end-screen">
+            <h1 className = "congrats-message">You won! Congrats!</h1>
             <h3>Would you like to play again?</h3>
-            <button onClick={onReset}>
+            <button className = "reset" onClick={onReset}>
                 Play Again
             </button>
         </div>

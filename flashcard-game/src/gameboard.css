@@ -3,10 +3,22 @@
   grid-template-columns: repeat(4,1fr);
   align-items: center;
   justify-content: center;
-  
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.game-title{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.reset-button{
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  border-radius: 50px;
+  background-color: #537173;
+}
+.moves{
+  font-size: 10px;
+  font-family: 'Roboto', sans-serif;
+  color: black;
 }

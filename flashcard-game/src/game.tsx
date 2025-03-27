@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './game.css';
 import Card from './card';
 import GameBoard from './gameboard';
 import EndScreen from './endscreen';
@@ -98,6 +98,18 @@ const Game: React.FC = () => {
         image:"https://via.placeholder.com/150",
         content:"Thor"
     },
+    {
+        id:"15",
+        match:"8",
+        image:"https://via.placeholder.com/150",
+        content:"Black Panther"
+    },
+    {
+        id:"16",
+        match:"8",
+        image:"https://via.placeholder.com/150",
+        content:"Black Panther"
+    }
 ]
 
 const [cards, setCardArray] = useState<Card[]>(cardArray);
@@ -105,6 +117,7 @@ const [gameOver, setGameOver] = useState<boolean>(false);
 const [currentMoves, setCurrentMoves] = useState<number>(0);
 const [totalMoves, setTotalMoves] = useState<number>(0);
 const [totalGames, setTotalGames] = useState<number>(0);
+const [averageMoves, setAverageMoves] = useState<number>(0);
 
 const shuffleCards = (array: Card[]) => {
     const newArray = [...array];
@@ -124,14 +137,19 @@ const handleGameOver = () => {
     setGameOver(true);
     setTotalGames(totalGames + 1);
     setTotalMoves(totalMoves + currentMoves);
+    setAverageMoves(totalMoves/totalGames);
     handleCardShuffle();
 }
 
     return(
         <>
-        <div>
-            <h1>Games Played: {totalGames}</h1>
-            <h1>Average # of Moves: {totalMoves/totalGames}</h1>
+        <div className = "game-title">
+            <div className = "games-played">
+                <h1>Games Played: {totalGames}</h1>
+            </div>
+            <div className = "average-moves">
+                <h1>Average # of Moves: {averageMoves}</h1>
+            </div>
         </div>
         <div>
             {gameOver ? (
