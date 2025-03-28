@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './endscreen.css';
-import Game from './game'
 
 type EndScreenProps = {
     onReset: () => void;
 }
+
 const EndScreen: React.FC<EndScreenProps> = ({onReset}) => {
     return (
         <div className = "end-screen">
@@ -15,6 +14,6 @@ const EndScreen: React.FC<EndScreenProps> = ({onReset}) => {
                 Play Again
             </button>
         </div>
-)
+    )
 }
-export default EndScreen
+export default EndScreen;

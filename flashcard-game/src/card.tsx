@@ -1,5 +1,4 @@
-import React, {JSX, useState} from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './card.css';
 
 type CardInfoParams = {
@@ -11,26 +10,25 @@ type CardInfoParams = {
      onClick: () => void;
 }
 
-const Card: React.FC<CardInfoParams> = ({id,match,flipped,image,content,onClick}) => {
+const Card: React.FC<CardInfoParams> = ({id,flipped,image,content,onClick}) => {
 
     return (
         <div onClick={onClick}>
-        {flipped ? (
-        <div className="card-image">
-            <img src={image}/>
-        </div>
-    ) : (
-        <div className="card-container">
-            <div className="card-content">
-                <h1>{content}</h1>
-            </div>
-        </div>
-    )}
-    </div>
-
-)
-
+            {flipped ? (
+                <div className="card-container">
+                    <img className="card-image" src={image} alt=""/>
+                    <h1 className="flipped-content">{content}</h1>
+                </div>
+            ) : (
+                <div className="card-container">
+                    <div className="card-content">
+                        <h1>{id}</h1>
+                    </div>
+                </div>
+            )}
+        </div>  
+    )
 }
 
-export default Card
+export default Card;
 

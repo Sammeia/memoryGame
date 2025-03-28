@@ -1,8 +1,6 @@
-import React, {JSX, useState} from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './gameboard.css';
 import Card from './card';
-import EndScreen from './endscreen'
 
 type Card = {
     id: string;
@@ -29,14 +27,11 @@ const GameBoard: React.FC<GameBoardProps> = ({cardArray,onGameOver,reset,setCurr
         if(flippedCards.length === 0){
             setFlippedCards([card]);
         } else if(flippedCards.length === 1){
-
             setFlippedCards([flippedCards[0],card]);
-
             if(flippedCards[0].match === card.match){
                 const newMatchedCards = [...matchedCards, flippedCards[0], card];
                 setMatchedCards(newMatchedCards);
                 setFlippedCards([]);
-
                 if(newMatchedCards.length === cardArray.length){
                     onGameOver();
                 }
@@ -44,9 +39,9 @@ const GameBoard: React.FC<GameBoardProps> = ({cardArray,onGameOver,reset,setCurr
                 setTimeout(()=>{
                     setFlippedCards([]);
                     setMatchedCards([]);
-            },1000);
-        }
-    }
+                },1000);
+            }
+        }   
     }
 
     return (
@@ -68,6 +63,6 @@ const GameBoard: React.FC<GameBoardProps> = ({cardArray,onGameOver,reset,setCurr
                 ))}
         </div>
         </>
-        )
+    )
 }
 export default GameBoard

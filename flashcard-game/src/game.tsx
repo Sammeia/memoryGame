@@ -1,5 +1,4 @@
-import React, {JSX, useState,useEffect} from 'react';
-import logo from './logo.svg';
+import React, {useState,useEffect} from 'react';
 import './game.css';
 import Card from './card';
 import GameBoard from './gameboard';
@@ -135,17 +134,18 @@ const handleCardShuffle = () => {
 
 const handleGameOver = () => {
     setGameOver(true);
-    const newTotalGames = totalGames + 1;
+    const newTotalGames = totalGames + 1; //Workaround for issues with average move calculation following state change
     setTotalGames(newTotalGames);
-    const newTotalMoves = totalMoves + currentMoves;
+    const newTotalMoves = totalMoves + currentMoves; //Workaround for issues with average move calculation following state change
     setTotalMoves(newTotalMoves);
-    setAverageMoves(newTotalMoves/newTotalGames);
+    setAverageMoves(Math.round(newTotalMoves/newTotalGames));
     handleCardShuffle();
 }
 
 useEffect(()=>{
     setCardArray(shuffleCards(cardArray));
 },[]);
+
     return(
         <>
         <div className = "game-title">
@@ -171,4 +171,4 @@ useEffect(()=>{
         </>
     )
 }
-export default Game
+export default Game;
