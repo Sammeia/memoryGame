@@ -1,5 +1,5 @@
 .card-container{
-    background-color: #2bcff0;
+    background-color: white;
     border-radius: 50px;
     border-color: black;
     margin: 20px;
@@ -8,7 +8,7 @@
     color:black;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 #d3e5f5;
 }
 .card-image{
     width: 100%;

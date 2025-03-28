@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
 }
-.game-title{
+.move-title{
   display:flex;
   flex-direction: column;
   justify-content: center;
@@ -13,12 +13,12 @@
 .reset-button{
   font-size: 20px;
   font-family: 'Roboto', sans-serif;
-  color: white;
+  color: black;
   border-radius: 50px;
-  background-color: #537173;
+  background-color: #f3feff;
 }
 .moves{
   font-size: 10px;
   font-family: 'Roboto', sans-serif;
-  color: black;
+  color: white;
 }

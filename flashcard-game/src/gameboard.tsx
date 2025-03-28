@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {JSX, useState} from 'react';
 import logo from './logo.svg';
 import './gameboard.css';
 import Card from './card';
@@ -51,7 +51,7 @@ const GameBoard: React.FC<GameBoardProps> = ({cardArray,onGameOver,reset,setCurr
 
     return (
         <>
-        <div className = "game-title">
+        <div className = "move-title">
             <div className = "moves">
                 <h1>Current # of Moves: {currentMoves}</h1>
             </div>
@@ -66,7 +66,7 @@ const GameBoard: React.FC<GameBoardProps> = ({cardArray,onGameOver,reset,setCurr
                         flipped={matchedCards.includes(card) || flippedCards.includes(card)}
                         onClick={() => handleFlip(card)} />
                 ))}
-            </div>
+        </div>
         </>
         )
 }

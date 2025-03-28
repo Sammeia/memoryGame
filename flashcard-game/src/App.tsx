@@ -10,10 +10,10 @@ function App() {
   return (
     gameStarted ?  (<Game/>) : (
       <div className="home-container">
-      <header className="App-header">
-        <p>Memory Game!</p>
-        <p>Rules:</p>
-      </header>
+      <h1 className="App-header">
+        Memory Game!
+      </h1>
+      <p className="rules">Rules:</p>
       <button className ="start-game-button" onClick = {()=>setGameStarted(true)}>
         Start the Game
       </button>
