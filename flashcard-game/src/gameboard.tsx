@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import './gameboard.css';
 import Card from './card';
 
+/*
+    Represents the type "Card" in the code
+*/
 type Card = {
     id: string;
     match: string;
@@ -17,6 +20,14 @@ type GameBoardProps ={
     currentMoves: number;
 }
 
+/*
+    Component that renders/controls the cards during gameplay
+    @param {Array} GameBoardProps.cardArray = The array of cards that are to be rendered
+    @param {function} GameBoardProps.onGameOver = The function that executes when the game ends
+    @param {function} GameBoardProps.reset = The function that executes when the user resets the game
+    @param {function} GameBoardProps.setCurrentMoves = A function to manage how many moves the player has taken
+    @param {number} GameBoardProps.currentMoves = The current number of moves the player has taken.
+*/
 const GameBoard: React.FC<GameBoardProps> = ({cardArray,onGameOver,reset,setCurrentMoves,currentMoves}) => {
 
     const [flippedCards, setFlippedCards] = useState<Card[]>([]);

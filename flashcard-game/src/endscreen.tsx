@@ -5,6 +5,10 @@ type EndScreenProps = {
     onReset: () => void;
 }
 
+/*
+    Component that represents the end-screen of the game 
+    @param {function} onReset = The function that executes if the user chooses to play again.
+*/
 const EndScreen: React.FC<EndScreenProps> = ({onReset}) => {
     return (
         <div className = "end-screen">

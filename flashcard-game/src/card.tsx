@@ -10,6 +10,14 @@ type CardInfoParams = {
      onClick: () => void;
 }
 
+/*
+    Component that renders a card on the screen
+    @param {string} id = The unique identifier assigned to the card
+    @param {boolean} flipped = Whether the card is flipped or not
+    @param {string} image = The image url to be displayed
+    @param {string} content = The content displayed on the flipped card
+    @param {function} onClick = The function that executes when the card is clicked
+*/
 const Card: React.FC<CardInfoParams> = ({id,flipped,image,content,onClick}) => {
 
     return (

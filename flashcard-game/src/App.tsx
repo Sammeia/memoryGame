@@ -2,6 +2,9 @@ import {useState} from 'react';
 import './App.css';
 import Game from './game';
 
+/*
+  The component that initiates gameplay
+*/
 function App() {
 
   const [gameStarted, setGameStarted] = useState<boolean>(false);

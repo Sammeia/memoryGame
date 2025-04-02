@@ -4,6 +4,9 @@ import Card from './card';
 import GameBoard from './gameboard';
 import EndScreen from './endscreen';
 
+/*
+    Represents the type "Card" in the code
+*/
 type Card = {
     id: string;
     match: string;
@@ -11,6 +14,9 @@ type Card = {
     content: string;
 };
 
+/*
+    Component that represents a game
+*/
 const Game: React.FC = () => {
     const cardArray = [
     {
